@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ShoppingCart, Instagram, Menu, X } from "lucide-react";
@@ -31,7 +32,9 @@ const Navbar: React.FC<NavbarProps> = ({ openCart, totalItems }) => {
   
   const navBackground = isScrolled
     ? "bg-white shadow-md"
-    : "bg-transparent";
+    : location.pathname === "/"
+    ? "bg-black/30 backdrop-blur-sm"
+    : "bg-white";
   
   const textColor = isScrolled
     ? "text-foreground"
