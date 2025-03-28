@@ -16,34 +16,29 @@ const Index = () => {
       <section className="relative h-screen">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?q=80&w=1974&auto=format&fit=crop"
+            src="/lovable-uploads/d4dc73f1-a029-4418-bae1-73d28b7a9b7c.png"
             alt="Ateliê Gleice Rios" 
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-black bg-opacity-40" />
         </div>
         
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-white container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-serif font-bold mb-4 leading-tight">
-            Ateliê Gleice Rios
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
-            Moda feminina exclusiva para mulheres que valorizam elegância e qualidade
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 mt-4">
-            <Button 
-              asChild
-              className="bg-primary hover:bg-pink-dark text-white font-medium px-6 py-3 rounded-md"
-            >
-              <Link to="/products/todos">Ver Coleção</Link>
-            </Button>
-            <Button 
-              asChild
-              variant="outline" 
-              className="border-white text-white hover:bg-white hover:text-foreground font-medium px-6 py-3 rounded-md"
-            >
-              <Link to="/products/vestidos">Vestidos</Link>
-            </Button>
+          <div className="mt-auto mb-24">
+            <div className="flex flex-col sm:flex-row gap-4 mt-4">
+              <Button 
+                asChild
+                className="bg-primary hover:bg-pink-dark text-white font-medium px-6 py-3 rounded-md"
+              >
+                <Link to="/products/todos">Ver Coleção</Link>
+              </Button>
+              <Button 
+                asChild
+                variant="outline" 
+                className="border-white text-white hover:bg-white hover:text-foreground font-medium px-6 py-3 rounded-md"
+              >
+                <Link to="/products/vestidos">Vestidos</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
