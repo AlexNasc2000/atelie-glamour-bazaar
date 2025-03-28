@@ -1,3 +1,4 @@
+
 import React from "react";
 import { X } from "lucide-react";
 import type { CartItem } from "@/services/productService";
@@ -13,10 +14,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
   const cart = useProductStore((state) => state.cart);
   const removeFromCart = useProductStore((state) => state.removeFromCart);
   const clearCart = useProductStore((state) => state.clearCart);
-
-  const calculateTotal = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
-  };
+  const getTotalPrice = useProductStore((state) => state.getTotalPrice);
 
   if (!isOpen) return null;
 
@@ -49,11 +47,11 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                 <div className="space-y-6">
                   {cart.length > 0 ? (
                     cart.map((item: CartItem) => (
-                      <div key={item.id} className="flex py-6">
+                      <div key={item.product.id} className="flex py-6">
                         <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                           <img
-                            src={item.image}
-                            alt={item.name}
+                            src={item.product.image}
+                            alt={item.product.name}
                             className="h-full w-full object-cover object-center"
                           />
                         </div>
@@ -62,11 +60,11 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                           <div>
                             <div className="flex justify-between text-base font-medium text-gray-900">
                               <h3>
-                                <a href={`/product/${item.id}`}>{item.name}</a>
+                                <a href={`/product/${item.product.id}`}>{item.product.name}</a>
                               </h3>
-                              <p className="ml-4">R$ {item.price.toFixed(2)}</p>
+                              <p className="ml-4">R$ {item.product.price.toFixed(2)}</p>
                             </div>
-                            <p className="mt-1 text-sm text-gray-500">{item.category}</p>
+                            <p className="mt-1 text-sm text-gray-500">{item.product.category}</p>
                           </div>
                           <div className="flex flex-1 items-end justify-between text-sm">
                             <p className="text-gray-500">Qtd {item.quantity}</p>
@@ -75,7 +73,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                               <button
                                 type="button"
                                 className="font-medium text-primary hover:text-pink-dark"
-                                onClick={() => removeFromCart(item.id)}
+                                onClick={() => removeFromCart(item.product.id)}
                               >
                                 Remover
                               </button>
@@ -93,7 +91,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose }) => {
                   <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                     <div className="flex justify-between text-base font-medium text-gray-900">
                       <p>Subtotal</p>
-                      <p>R$ {calculateTotal()}</p>
+                      <p>R$ {getTotalPrice().toFixed(2)}</p>
                     </div>
                     <p className="mt-0.5 text-sm text-gray-500">Frete calculado na finalização da compra.</p>
                     <div className="mt-6">
