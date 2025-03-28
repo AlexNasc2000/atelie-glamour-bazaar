@@ -14,7 +14,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
   return (
     <div className="flex items-center space-x-4">
       <a
-        href="https://instagram.com"
+        href="https://www.instagram.com/_usegleicerios/"
         target="_blank"
         rel="noopener noreferrer"
         className={`${className} hover:text-pink-dark transition-colors`}
