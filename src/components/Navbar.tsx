@@ -32,8 +32,8 @@ const Navbar: React.FC<NavbarProps> = ({ openCart, totalItems }) => {
   const navBackground = isScrolled
     ? "bg-white shadow-md"
     : location.pathname === "/"
-    ? "bg-secondary backdrop-blur-sm"
-    : "bg-secondary";
+    ? "bg-white shadow-md""
+    : "bg-white shadow-md"";
   
   const textColor = isScrolled
     ? "text-foreground"
